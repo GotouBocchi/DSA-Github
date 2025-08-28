@@ -52,6 +52,18 @@ int locate(List L, int data){
     return -1;
 }
 
+List insertSorted(List L, int data){
+    int i, x;
+    L.count++;
+    for(i=0; data > L.elem[i]; i++);
+    for(x = L.count-1; x > i; x--){
+            L.elem[x] = L.elem[x-1];
+    }
+    L.elem[x] = data;
+    
+    return L;
+}
+
 
 int main() {
     List l;
@@ -59,8 +71,8 @@ int main() {
     
     l.elem[0] = 1;
     l.elem[1] = 3;
-    l.elem[2] = 2;
-    l.elem[3] = 5;
+    l.elem[2] = 7;
+    l.elem[3] = 9;
     l.count = 4;
     
     display(l);
@@ -73,7 +85,11 @@ int main() {
     
     display(l);
     
-    printf("\n%d" ,locate(l, 4));
+    printf("\n%d\n" ,locate(l, 4));
+    
+    l = insertSorted(l, 5);
+    
+    display(l);
 
     return 0;
 }
