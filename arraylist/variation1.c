@@ -9,12 +9,10 @@ typedef struct{
 
 }List;
 
-void display(List L){
-    int i = 0;
-    for(i=0; i<L.count; i++){
-        printf("%d", L.elem[i]);
-    }
-    printf("\n");
+List initialize(List L) {
+    L.count = 0;
+    
+    return L;
 }
 
 List insertPos(List L, int data, int position){
@@ -64,32 +62,42 @@ List insertSorted(List L, int data){
     return L;
 }
 
+void display(List L){
+    int i = 0;
+    for(i=0; i<L.count; i++){
+        printf("%d", L.elem[i]);
+    }
+    printf("\n");
+}
+
 
 int main() {
-    List l;
+    List L;
     int i;
     
-    l.elem[0] = 1;
-    l.elem[1] = 3;
-    l.elem[2] = 7;
-    l.elem[3] = 9;
-    l.count = 4;
+    L = initialize(L);
     
-    display(l);
+    L.elem[0] = 1;
+    L.elem[1] = 3;
+    L.elem[2] = 7;
+    L.elem[3] = 9;
+    L.count = 4;
     
-    l = insertPos(l, 4, 2);
+    display(L);
     
-    display(l);
+    L = insertPos(L, 4, 2);
     
-    l = deletePos(l, 1);
+    display(L);
     
-    display(l);
+    L = deletePos(L, 1);
     
-    printf("\n%d\n" ,locate(l, 4));
+    display(L);
     
-    l = insertSorted(l, 5);
+    printf("\n%d\n" ,locate(L, 4));
     
-    display(l);
+    L = insertSorted(L, 5);
+    
+    display(L);
 
     return 0;
 }
