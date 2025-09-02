@@ -52,14 +52,70 @@ void insertLast(List *list, int data) {
 }
 
 void insertPos(List *list, int data, int index) {
+    Node *newNode = malloc(sizeof(Node));
+    newNode->data = data;
+    Node *trav;
+    int i;
+    for(trav = list->head, i = 0; i < index; trav = trav->next, i++);
+    if(trav != NULL) {
+        newNode->next = trav;
+    } else {
+        newNode->next = NULL;
+    }
     
-        
+    
+    if(index != 0) {
+        for(trav = list->head, i = 0; i < index-1; trav = trav->next, i++);
+        trav->next = newNode;
+    }
+    else {
+        list->head = newNode;
+    }
+    list->count++;
 }
 
-void deleteStart(List *list);
-void deleteLast(List *list);
-void deletePos(List *list, int index);
-int retrieve(List *list, int index);
+void deleteStart(List *list) {
+    Node *temp;
+    temp = list->head;
+    list->head = temp->next;
+    free(temp);
+    list->count--;
+}
+
+void deleteLast(List *list) {
+    Node *trav;
+    Node *temp;
+    int i;
+    for(trav = list->head, i = 0; i < (list->count)-2; trav = trav->next, i++);
+    temp = trav->next;
+    trav->next = NULL;
+    free(temp);
+    list->count--;
+}
+
+void deletePos(List *list, int index) {
+    Node *trav;
+    Node *temp;
+    int i;
+    for(trav = list->head, i = 0; i < index-1; trav = trav->next, i++);
+    
+    if(index == 0) {
+        temp = list->head;
+        list->head = temp->next;
+    } 
+    else {
+        temp = trav->next;
+        trav->next = temp->next;
+    }
+    free(temp);
+    list->count--;
+    
+}
+
+int retrieve(List *list, int index) {
+    
+}
+
 int locate(List *list, int data);
 
 void display(List *list) {
@@ -68,6 +124,7 @@ void display(List *list) {
     for(trav = list->head; trav != NULL; trav = trav->next) {
         printf("%d ", trav->data);
     }
+    printf("\nCount: %d\n", list->count);
 }
 
 
@@ -81,7 +138,17 @@ int main() {
     insertFirst(L, 71);
     
     insertLast(L, 23);
-    
+    display(L);
+    insertPos(L, 21, 4);
+    display(L);
+    deleteStart(L);
+    display(L);
+    deleteLast(L);
+    display(L);
+    insertFirst(L, 24);
+    insertFirst(L, 62);
+    display(L);
+    deletePos(L, 0);
     display(L);
 
     return 0;
