@@ -37,14 +37,38 @@ void insertFirst(List *list, int data){
     list->count++;
 }
 
-void insertLast(List *list, int data);
-void insertPos(List *list, int data, int index);
+void insertLast(List *list, int data) {
+    Node *newNode = malloc(sizeof(Node));
+    
+    newNode->data = data;
+    newNode->next = NULL;
+    
+    Node *trav;
+    
+    for(trav = list->head; trav->next != NULL; trav = trav->next);
+    
+    trav->next = newNode;
+    list->count++;
+}
+
+void insertPos(List *list, int data, int index) {
+    
+        
+}
+
 void deleteStart(List *list);
 void deleteLast(List *list);
 void deletePos(List *list, int index);
 int retrieve(List *list, int index);
 int locate(List *list, int data);
-void display(List *list);
+
+void display(List *list) {
+    Node *trav;
+    printf ("Display: ");
+    for(trav = list->head; trav != NULL; trav = trav->next) {
+        printf("%d ", trav->data);
+    }
+}
 
 
 int main() {
@@ -52,9 +76,13 @@ int main() {
     
     L = initialize();
     
-    insertFirst(L, 21);
     insertFirst(L, 19);
+    insertFirst(L, 51);
+    insertFirst(L, 71);
     
+    insertLast(L, 23);
+    
+    display(L);
 
     return 0;
 }
