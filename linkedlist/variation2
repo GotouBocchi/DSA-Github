@@ -109,14 +109,22 @@ void deletePos(List *list, int index) {
     }
     free(temp);
     list->count--;
-    
 }
 
 int retrieve(List *list, int index) {
-    
+    Node* trav;
+    int i;
+    for(trav = list->head, i = 0; i < index; trav = trav->next, i++);
+    return trav->data;
 }
 
-int locate(List *list, int data);
+int locate(List *list, int data) {
+    Node* trav;
+    int i;
+    for(trav = list->head, i = 0; trav->data != data; trav = trav->next, i++);
+    
+    return i;
+}
 
 void display(List *list) {
     Node *trav;
@@ -148,8 +156,10 @@ int main() {
     insertFirst(L, 24);
     insertFirst(L, 62);
     display(L);
-    deletePos(L, 0);
+    deletePos(L, 4);
     display(L);
+    printf("%d\n", retrieve(L,2));
+    printf("%d\n", locate(L,62));
 
     return 0;
 }
