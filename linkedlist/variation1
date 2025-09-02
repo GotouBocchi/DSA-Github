@@ -1,0 +1,85 @@
+// Online C compiler to run C program online
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct node {
+    int data;
+    struct node* next;
+}Node;
+
+typedef struct {
+    Node* head;
+    int count;
+}List;
+
+List initialize() {
+    List L;
+    L.head = NULL;
+    L.count = 0;
+    
+    return L;
+}
+
+List insertFirst(List list, int data) {
+    Node *newNode = malloc(sizeof(Node));
+    
+    newNode->data = data;
+    if(list.head != NULL) {
+        newNode->next = list.head;
+    }
+    else {
+        newNode->next = NULL;
+    }
+    list.head = newNode;
+    list.count++;
+    return list;
+}
+
+List insertLast(List list, int data) {
+    Node* newNode = malloc(sizeof(Node));
+    Node* trav;
+    newNode->data = data;
+    newNode->next = NULL;
+    for(trav = list.head; trav->next != NULL; trav = trav->next);
+    trav->next = newNode;
+    list.count++;
+    return list;
+}
+
+List insertPos(List list, int data, int index) {
+    Node* newNode = malloc(sizeof(Node));
+    Node* trav;
+    int i;
+    newNode->data = data;
+    for(trav = list.head, i = 0; i < index-1; trav = trav->next, i++);
+    newNode->next = trav->next;
+    trav->next = newNode;
+    list.count++;
+    
+    
+    return list;
+}
+
+void display(List L) {
+    Node *current = malloc(sizeof(Node));
+    printf("\nCount = %d\nL = ", L.count);
+    for(current = L.head; current != NULL; current = current->next) {
+        printf("%d ", current->data);
+    }
+}
+
+int main() {
+    List L;
+    
+    L = initialize();
+    L = insertFirst(L, 2);
+    L = insertFirst(L, 3);
+    L = insertFirst(L, 4);
+    L = insertLast(L, 5);
+    L = insertLast(L, 6);
+    L = insertPos(L, 7, 5);
+    display(L);
+
+
+    return 0;
+}
