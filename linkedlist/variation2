@@ -1,0 +1,60 @@
+// Online C compiler to run C program online
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct node{
+    int data;
+    struct node* next;
+}Node;
+
+typedef struct {
+    Node* head;
+    int count;
+}List;
+
+List *initialize() {
+    List *L = malloc(sizeof(List));
+    L->head = NULL;
+    L->count = 0;
+    
+    return L;
+}
+
+void empty(List *list){
+}
+
+void insertFirst(List *list, int data){
+    Node *newNode = malloc(sizeof(Node));
+    
+    newNode->data = data;
+    if(list->head!=NULL){
+        newNode->next = list->head;
+    }
+    else {
+        newNode->next = NULL;
+    }
+    list->head = newNode;
+    list->count++;
+}
+
+void insertLast(List *list, int data);
+void insertPos(List *list, int data, int index);
+void deleteStart(List *list);
+void deleteLast(List *list);
+void deletePos(List *list, int index);
+int retrieve(List *list, int index);
+int locate(List *list, int data);
+void display(List *list);
+
+
+int main() {
+    List *L;
+    
+    L = initialize();
+    
+    insertFirst(L, 21);
+    insertFirst(L, 19);
+    
+
+    return 0;
+}
