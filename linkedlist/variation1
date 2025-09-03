@@ -20,6 +20,16 @@ List initialize() {
     return L;
 }
 
+List empty(List list) {
+    Node* temp;
+    for(temp = list.head; list.head != NULL; temp = list.head) {
+        list.head = temp->next;
+        free(temp);
+    }
+    list.count = 0;
+    return list;
+}
+
 List insertFirst(List list, int data) {
     Node *newNode = malloc(sizeof(Node));
     
@@ -60,6 +70,48 @@ List insertPos(List list, int data, int index) {
     return list;
 }
 
+List deleteStart(List list) {
+    Node *temp = malloc(sizeof(Node));
+
+    temp = list.head;
+    list.head = list.head->next;
+    free(temp);
+    
+    list.count--;
+    return list;
+}
+
+List deleteLast(List list) {
+    Node *trav = malloc(sizeof(Node));
+    Node *temp;
+    
+    for(trav = list.head; trav->next->next != NULL; trav = trav->next);
+    temp = trav->next->next;
+    trav->next=NULL;
+    free(temp);
+    list.count--;
+    return list;
+}
+
+List deletePos(List list, int index) {
+    Node *trav = malloc(sizeof(Node));
+    Node *temp;
+    int i;
+    for(trav = list.head, i = 0; i < index-1; trav = trav->next, i++);
+    temp = trav->next;
+    trav->next = trav->next->next;
+    free(temp);
+    list.count--;
+    return list;
+}
+
+int locate(List list, int data) {
+    Node *trav = malloc(sizeof(Node));
+    int i;
+    for(trav = list.head, i = 0; trav->data != data; trav = trav->next, i++);
+    return i;
+}
+
 void display(List L) {
     Node *current = malloc(sizeof(Node));
     printf("\nCount = %d\nL = ", L.count);
@@ -79,7 +131,15 @@ int main() {
     L = insertLast(L, 6);
     L = insertPos(L, 7, 5);
     display(L);
-
+    L = deleteStart(L);
+    display(L);
+    L = deleteLast(L);
+    display(L);
+    L = deletePos(L, 1);
+    display(L);
+    printf("\n%d", locate(L, 6));
+    L = empty(L);
+    display(L);
 
     return 0;
 }
