@@ -101,11 +101,13 @@ void deletePos(List* list, int index) {
 }
 
 int retrieve(List* list, int index) {
-    if(index >= list->count) return -1;
-    Node* current = malloc(sizeof(Node));
-    int i;
-    for(current = list->head, i = 0; i < index; current = current->next, i++);
-    return current->data;
+    if(index >= 0 && index < list->count) {
+        Node* current = malloc(sizeof(Node));
+        int i;
+        for(current = list->head, i = 0; i < index; current = current->next, i++);
+        return current->data;
+    }
+    else return -1;
 }
 
 int locate(List* list, int data) {
