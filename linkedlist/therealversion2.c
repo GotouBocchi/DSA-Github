@@ -113,7 +113,7 @@ int retrieve(List* list, int index) {
 int locate(List* list, int data) {
     if(list->head == NULL) return -1;
     int i;
-    Node* current = malloc(sizeof(Node));
+    Node* current;
     for(current = list->head, i = 0; current->data != data && current->next != NULL; current = current->next, i++);
     if(current->data == data) return i;
     else return -1;
