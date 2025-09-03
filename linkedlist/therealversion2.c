@@ -17,7 +17,6 @@ List *initialize() {
     if(L==NULL) return NULL;
     L->head = NULL;
     L->count = 0;
-    
     return L;
 }
 
@@ -97,7 +96,25 @@ void deletePos(List* list, int index) {
         temp = current->next;
         current->next = temp->next;
         free(temp);
+        list->count--;
     }
+}
+
+int retrieve(List* list, int index) {
+    if(index >= list->count) return -1;
+    Node* current = malloc(sizeof(Node));
+    int i;
+    for(current = list->head, i = 0; i < index; current = current->next, i++);
+    return current->data;
+}
+
+int locate(List* list, int data) {
+    if(list->head == NULL) return -1;
+    int i;
+    Node* current = malloc(sizeof(Node));
+    for(current = list->head, i = 0; current->data != data && current->next != NULL; current = current->next, i++);
+    if(current->data == data) return i;
+    else return -1;
 }
 
 void display(List* list) {
@@ -131,5 +148,11 @@ void main() {
     display(L);
     deletePos(L, 1);
     display(L);
+    insertFirst(L, 41);
+    insertFirst(L, 28);
+    insertFirst(L, 11);
+    display(L);
+    printf("\n%d", retrieve(L, 0));
+    printf("\n%d", locate(L, 213));
     
 }
