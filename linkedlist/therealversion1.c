@@ -29,7 +29,7 @@ List insertFirst(List list, int data) {
 }
 
 List empty(List list) {
-    Node *trav = malloc(sizeof(Node));
+    Node *trav;
     Node* temp;
     for(trav = list.head; list.head != NULL; trav = list.head) {
         temp = trav;
