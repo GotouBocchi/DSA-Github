@@ -42,7 +42,10 @@ int pop(Stack* s) {
     }
 }
 
-int peek();
+int peek(Stack* s) {
+    if(s->top == -1) return s->top;
+    else return s->items[s->top];
+}
 
 void display(Stack* s) {
     if(s->top == -1) printf("S = is empty\n");
@@ -64,10 +67,7 @@ int main() {
     display(S);
     push(S, 2);
     display(S);
-    
-    
-    
-    
+    printf("\n%d", peek(S));
 
     return 0;
 }
