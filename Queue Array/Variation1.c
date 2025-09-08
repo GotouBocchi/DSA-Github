@@ -43,7 +43,7 @@ void enqueue(Queue* q, int value) {
         q->front = q->rear += 1;
     }
     else {
-        q->rear = (q->rear+1)%MAX;
+        q->rear = (q->rear + 1) % MAX;
     }
     q->list.items[q->rear] = value;
     q->list.count++;
@@ -56,7 +56,11 @@ int dequeue(Queue* q) {
         q->list.count--;
         return q->list.items[(q->front - 1 + MAX) % MAX];
     }
-    
+}
+
+int front(Queue* q) {
+    if(isEmpty(q)) return -1;
+    else return q->front;
     
 }
 
@@ -84,30 +88,27 @@ int main() {
     enqueue(Q, 811);
     enqueue(Q, 9787);
     display(Q);
-    printf("\n%d", dequeue(Q));
-    printf("\n%d", dequeue(Q));
-    printf("\n%d", dequeue(Q));
-    printf("\n%d", dequeue(Q));
+    printf("\nDequeue value = %d", dequeue(Q));
+    printf("\nDequeue value = %d", dequeue(Q));
+    printf("\nDequeue value = %d", dequeue(Q));
+    printf("\nDequeue value = %d", dequeue(Q));
     display(Q);
     enqueue(Q, 23);
     enqueue(Q, 53);
     display(Q);
-    printf("\n%d", dequeue(Q));
-    printf("\n%d", dequeue(Q));
-    printf("\n%d", dequeue(Q));
-    printf("\n%d", dequeue(Q));
-    printf("\n%d", dequeue(Q));
+    printf("\nDequeue value = %d", dequeue(Q));
+    printf("\nDequeue value = %d", dequeue(Q));
+    printf("\nDequeue value = %d", dequeue(Q));
+    printf("\nDequeue value = %d", dequeue(Q));
+    printf("\nDequeue value = %d", dequeue(Q));
+    printf("\nFront = %d", front(Q));
     display(Q);
-    printf("\n%d", dequeue(Q));
+    printf("\nDequeue value = %d", dequeue(Q));
     display(Q);
-    printf("\n%d", dequeue(Q));
-    
-    
-    
-
-    
+    printf("\nFront = %d", front(Q));
+    printf("\nDequeue value = %d", dequeue(Q));
+    printf("\nFront = %d", front(Q));
     display(Q);
-    
 
     return 0;
 }
