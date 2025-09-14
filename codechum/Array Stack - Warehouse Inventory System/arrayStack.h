@@ -25,8 +25,7 @@ void push(Stack *s, int value) {
 
 int pop(Stack *s) {
     s->top--;
-    return s->items[s->top+1];
-
+    return s->items[s->top + 1];
 
 }
 
@@ -34,13 +33,18 @@ int peek(Stack *s) {
     return s->items[s->top];
 }
 
+int top(Stack *s) {
+    return s->top;
+}
+
 void display(Stack *s) {
     if (isEmpty(s)) {
         printf("Stack is empty.\n");
-        return;
-    }
-    int i;
-    for (i = s->top; i >= 0; i--) {
-        printf("%d\n", s->items[i]);
+    } 
+    else {
+        int i;
+        for (i = s->top; i >= 0; i--) {
+            printf("%d\n", s->items[i]);
+        }
     }
 }
