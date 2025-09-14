@@ -10,35 +10,25 @@ Queue* initialize() {
     Q->rear = -1;
     Q->list.count = 0;
     
+    return Q;
 }
 
 void enqueue(Queue* q, int value) {
-    if(isEmpty(q)) {
+    if(q->front == -1 && q->rear == -1) {
         q->front++;
         q->rear++;
     } 
-    else if(isFull(q)) {
-        // printf("Queue is Full");
-        return;
-    } 
-    else {
-        q->rear = ((q->rear + 1) % MAX);
-    }
+    else q->rear = ((q->rear + 1) % MAX);
+    
     q->list.items[q->rear] = value;
     q->list.count++;
-    
 }
 
 int dequeue(Queue* q) {
-    if(isEmpty(q)) {
-        printf("Queue is Empty");
-        return -1;
-    }
-    else {
-        q->front = ((q->front + 1) % MAX);
-        q->list.count--;
-        return (q->list.items[(q->front - 1 + MAX) % MAX]);
-    }
+    q->front = ((q->front + 1) % MAX);
+    q->list.count--;
+    
+    return (q->list.items[(q->front - 1 + MAX) % MAX]);
 }
 
 bool isFull(Queue* q) {
@@ -52,11 +42,12 @@ bool isEmpty(Queue* q) {
 }
 
 void display(Queue* q) {
-    if(isEmpty(q)) printf("Queue is empty.\n");
+    if(isEmpty(q)) printf("Queue is empty.");
     else {
         int trav, i;
-        for(i = q->front, trav = 0; trav < q->list.count; trav++, i = ((q->front + 1) % MAX)) printf("%d ", q->list.items[i]);
-        printf("\n");
+        for(i = q->front, trav = 0; trav < q->list.count; i = ((i + 1) % MAX), trav++) {
+            printf("%d ", q->list.items[i]);
+        }
     }
-    
+    printf("\n");
 }
