@@ -21,34 +21,33 @@ int main() {
         
         switch(choice) {
             case 1:
-                if(isFull(Q[0])) {
-                    printf("Regular queue is full. Please try again later.\n\n");
-                }
+                if(isFull(Q[0])) printf("Regular queue is full. Please try again later.\n\n");
                 else {
                     number++;
                     enqueue(Q[0], number);
                     printf("You have entered the Regular queue. Your number is %d.\n\n", number);
                 }
                 break;
+                
             case 2:
-                if(isFull(Q[1])) {
-                    printf("Priority queue is full. Please try again later.\n\n");
-                }
+                if(isFull(Q[1])) printf("Regular queue is full. Please try again later.\n\n");
                 else {
                     number++;
                     enqueue(Q[1], number);
                     printf("You have entered the Priority queue. Your number is %d.\n\n", number);
                 }
                 break;
+                
             case 3:
-                if(isEmpty(Q[1]) == 0) {
+                if(!isEmpty(Q[1])) {
                     printf("Calling next customer from Priority Queue. Customer number: %d\n\n", dequeue(Q[1]));
                 } 
                 else if(!isEmpty(Q[0])) {
                     printf("Calling next customer from Regular Queue. Customer number: %d\n\n", dequeue(Q[0]));
                 } 
-                else printf("No Customer");
+                else printf("There are no more customer from Queue.\n\n");
                 break;
+                
             case 4: 
                 printf("\n-- Current Queue Status --\n");
                 printf("Regular Queue: ");
@@ -57,17 +56,16 @@ int main() {
                 display(Q[1]);
                 printf("\n");
                 break;
+                
             case 5:
                 printf("Exiting program. Goodbye!");
                 break;
+                
             default:
-                printf("You have been invalid");
+                printf("The number you input is invalid\n\n");
                 break;
         }
     }
-    
-    
-    
 
     return 0;
 }
