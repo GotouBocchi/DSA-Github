@@ -32,6 +32,11 @@ int allocSpace(VHeap* V) {
     return ret;
 }
 
+void deallocSpace(VHeap* V, int index) {
+    V->H[index].next = V->avail;
+    V->avail = index;
+}
+
 void insertFirst(int* L, VHeap* V, int elem) {
     int newCell = allocSpace(V);
     if(newCell != -1) {
@@ -39,22 +44,35 @@ void insertFirst(int* L, VHeap* V, int elem) {
         V->H[newCell].next = *L;
         *L = newCell;
     }
+    else printf("List is Full\n");
 }
 
-// SAYOP MANI
-// void insertLast(int* L, VHeap* V, int elem) {
-//     int newCell = allocSpace(V);
-//     if(newCell != -1) {
-//         V->H[newCell].elem = elem;
-//         V->H[newCell].next = -1;
-//     }
-//     int *trav;
-//     for(trav = L; trav != NULL; trav = V->H[trav].next);
-//     V->H[trav].next = newCell;
-// }
+void insertLast(int* L, VHeap* V, int elem) {
+    int newCell = allocSpace(V);
+    if(newCell != -1) {
+        int *trav;
+        V->H[newCell].elem = elem;
+        V->H[newCell].next = -1;
+        for(trav = L; *trav != -1; trav = &V->H[*trav].next);
+        *trav = newCell;
+    }
+    else printf("List is Full\n");
+}
+
+
 
 void display(int L, VHeap V) {
     for(;L != -1; L = V.H[L].next) printf("%d ", V.H[L].elem);
+}
+
+void delete(int* L, VHeap* V, int elem) {
+    int *trav, temp;
+    for(trav = L; *trav != -1 && V->H[*trav].elem != elem; trav = &V->H[*trav].next);
+    if(*trav != -1) {
+        temp = *trav;
+        *trav = V->H[*trav].next;
+        deallocSpace(V , temp);
+    }
 }
     
     
@@ -65,7 +83,22 @@ int main() {
     VHeap V;
     initialize(&V);
     insertFirst(&L, &V, 50);
-    insertFirst(&L, &V, 100);
+    delete(&L, &V, 50);
+    display(L, V);
+    printf("\n");
+    insertLast(&L, &V, 2000);
+    insertLast(&L, &V, 4000);
+    insertLast(&L, &V, 3000);
+    insertFirst(&L, &V, 1000);
+    display(L, V);
+    printf("\n");
+    delete(&L, &V, 4000);
+    display(L, V);
+    printf("\n");
+    insertFirst(&L, &V, 5000);
+
+
+    
     display(L, V);
     
 
