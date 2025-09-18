@@ -10,7 +10,7 @@ typedef enum{
     BSIS
 }Course;
 
-char courseNames[][10] = {"", "BSIT", "BSCS", "BSIS"};
+const char* courseNames[] = {"", "BSIT", "BSCS", "BSIS"};
 
 typedef struct {
     int id;
@@ -23,7 +23,7 @@ typedef struct {
 
 typedef struct newNode{
     Student person;
-    struct newNode* link;
+    struct newNode* next;
 }newNode, *newNodePtr;
 
 // typedef struct{
@@ -59,7 +59,10 @@ bool isEmptyStack(Stack* s) {
 }
 
 void push(Stack* s, Student person) {
-    
+    newNode* node = malloc(sizeof(person));
+    node->person = person;
+    node->next = s->top;
+    s->top = node;
 }
 
 int pop(Stack* s) {
@@ -71,7 +74,17 @@ int peek(Stack* s) {
 }
 
 void displayStack(Stack* s) {
-    
+    newNode* trav;
+    printf("\n\n-----Display-----\n");
+    for(trav = s->top; trav != NULL; trav = trav->next) {
+        printf("ID: %d\n");
+        printf("First Name: %s\n", trav->person.fname);
+        printf("Last Name: %s\n", trav->person.lname);
+        printf("Course: %s\n", courseNames[trav->person.course]);
+        printf("Year lvl: %d\n", trav->person.yearlvl);
+        printf("Grades: %.2f\n\n", trav->person.grades);
+    }
+    printf("-----End Display-----\n\n");
 }
 /*
 Queue* initQueue() {
@@ -184,17 +197,17 @@ void showStackMenu(Stack* S) {
             case 3: 
             Student person;
             printf("ID: ");
-            scanf("%d", person.id);
+            scanf(" %d", &person.id);
             printf("First Name: ");
-            scanf("%s", person.fname);
+            scanf(" %s", &person.fname);
             printf("Last Name: ");
-            scanf("%s", person.lname);
+            scanf(" %s", &person.lname);
             printf("Course: ");
-            scanf("%d", person.course);
+            scanf(" %d", &person.course);
             printf("Year lvl: ");
-            scanf("ds", person.yearlvl);
-            printf("Last Name: ");
-            scanf("%f", person.grades);
+            scanf(" %d", &person.yearlvl);
+            printf("Grades: ");
+            scanf(" %f", &person.grades);
             push(S, person); 
             printf("push() called\n"); 
             break;
