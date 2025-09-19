@@ -59,14 +59,23 @@ bool isEmptyStack(Stack* s) {
 }
 
 void push(Stack* s, Student person) {
-    newNode* node = malloc(sizeof(person));
+    newNode* node = malloc(sizeof(newNode));
     node->person = person;
     node->next = s->top;
     s->top = node;
 }
 
 int pop(Stack* s) {
-    
+    if(s->top != NULL) {
+        newNode* trav;
+        int store;
+        trav = s->top;
+        store = trav->person.id;
+        s->top = trav->next;
+        free(trav);
+        return store;
+    }
+    else return -1;
 }
 
 int peek(Stack* s) {
@@ -77,7 +86,7 @@ void displayStack(Stack* s) {
     newNode* trav;
     printf("\n\n-----Display-----\n");
     for(trav = s->top; trav != NULL; trav = trav->next) {
-        printf("ID: %d\n");
+        printf("ID: %d\n", trav->person.id);
         printf("First Name: %s\n", trav->person.fname);
         printf("Last Name: %s\n", trav->person.lname);
         printf("Course: %s\n", courseNames[trav->person.course]);
