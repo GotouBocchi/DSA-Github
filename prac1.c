@@ -26,10 +26,10 @@ typedef struct newNode{
     struct newNode* next;
 }newNode, *newNodePtr;
 
-// typedef struct{
-//     newNodePtr front;
-//     newNodePtr rear;
-// }Queue;
+typedef struct{
+    newNodePtr front;
+    newNodePtr rear;
+}Queue;
 
 typedef struct {
     newNodePtr top;
@@ -98,7 +98,7 @@ void displayStack(Stack* s) {
         printf("-----End Display-----\n\n");
     }
 }
-/*
+
 Queue* initQueue() {
     Queue* Q = malloc(sizeof(Queue));
     if(Q != NULL) {
@@ -110,19 +110,37 @@ Queue* initQueue() {
 }
 
 bool isFullQueue(Queue* q) {
-    
+    return -1;
 }
 
 bool isEmptyQueue(Queue* q) {
-    
+    if(q->rear == NULL) return true;
+    else return false;
 }
 
-void enqueue(Queue* q, int value) {
+void enqueue(Queue* q, Student person) {
+    newNode* node = malloc(sizeof(newNode));
+    node->person = person;
+    node->next = NULL;
     
+    if(isEmptyQueue(q)) {
+        q->front = node;
+    }
+    else {
+        q->rear->next = node;
+    }
+    q->rear = node;
 }
 
 int dequeue(Queue* q) {
-    
+    if(!isEmptyQueue(q)) {
+        newNode *temp;
+        temp = q->front;
+        int id = temp->person.id;
+        free(temp);
+        q->front = temp->next;
+        return id;
+    }
 }
 
 int front(Queue* q) {
@@ -132,7 +150,7 @@ int front(Queue* q) {
 void displayQueue(Queue* q) {
     
 }
-
+/*
 List* initList() {
     List* L = malloc(sizeof(List));
     if(L != NULL) {
@@ -244,7 +262,7 @@ void showStackMenu(Stack* S) {
         }
     }
 }
-/*
+
 // ===== QUEUE MENU =====
 void showQueueMenu(Queue* Q) {
     int choice = -1;
@@ -261,18 +279,55 @@ void showQueueMenu(Queue* Q) {
         scanf("%d", &choice);
 
         switch (choice) {
-            case 1: printf("isFullQueue() = %d\n", isFullQueue()); break;
-            case 2: printf("isEmptyQueue() = %d\n", isEmptyQueue()); break;
-            case 3: enqueue(); printf("enqueue() called\n"); break;
-            case 4: printf("dequeue() = %d\n", dequeue()); break;
-            case 5: printf("front() = %d\n", front()); break;
-            case 6: displayQueue(); break;
-            case 0: printf("Returning to Main Menu...\n"); break;
-            default: printf("Invalid choice!\n"); break;
+            case 1: 
+            printf("isFullQueue() = %d\n", isFullQueue(Q)); 
+            break;
+            
+            case 2: 
+            printf("isEmptyQueue() = %d\n", isEmptyQueue(Q)); 
+            break;
+            
+            case 3: 
+            Student person;
+            printf("ID: ");
+            scanf(" %d", &person.id);
+            printf("First Name: ");
+            scanf(" %s", &person.fname);
+            printf("Last Name: ");
+            scanf(" %s", &person.lname);
+            printf("Course: ");
+            scanf(" %d", &person.course);
+            printf("Year lvl: ");
+            scanf(" %d", &person.yearlvl);
+            printf("Grades: ");
+            scanf(" %f", &person.grades);
+            enqueue(Q, person); 
+            printf("enqueue() called\n"); 
+            break;
+            
+            case 4: 
+            printf("dequeue() = %d\n", dequeue(Q));
+            break;
+            
+            case 5:
+            printf("front() = %d\n", front(Q));
+            break;
+            
+            case 6: 
+            displayQueue(Q); 
+            break;
+            
+            case 0: 
+            printf("Returning to Main Menu...\n"); 
+            break;
+            
+            default: 
+            printf("Invalid choice!\n"); 
+            break;
         }
     }
 }
-
+/*
 // ===== LIST MENU =====
 void showListMenu(List* L) {
     int choice = -1;
@@ -312,6 +367,8 @@ void showListMenu(List* L) {
 void main() {
     Stack *S;
     S = initStack();
+    Queue *Q;
+    Q = initQueue();
     
 
     int choice = -1;
@@ -329,9 +386,9 @@ void main() {
             showStackMenu(S); 
             break;
             
-            // case 2: 
-            // showQueueMenu(); 
-            // break;
+            case 2: 
+            showQueueMenu(Q); 
+            break;
             
             // case 3: 
             // showListMenu(); 
