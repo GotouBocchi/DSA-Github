@@ -66,7 +66,7 @@ void push(Stack* s, Student person) {
 }
 
 int pop(Stack* s) {
-    if(s->top != NULL) {
+    if(!isEmptyStack(s)) {
         newNode* trav;
         int store;
         trav = s->top;
@@ -79,21 +79,24 @@ int pop(Stack* s) {
 }
 
 int peek(Stack* s) {
-    
+    if(!isEmptyStack(s)) return s->top->person.id;
+    else return -1;
 }
 
 void displayStack(Stack* s) {
-    newNode* trav;
-    printf("\n\n-----Display-----\n");
-    for(trav = s->top; trav != NULL; trav = trav->next) {
-        printf("ID: %d\n", trav->person.id);
-        printf("First Name: %s\n", trav->person.fname);
-        printf("Last Name: %s\n", trav->person.lname);
-        printf("Course: %s\n", courseNames[trav->person.course]);
-        printf("Year lvl: %d\n", trav->person.yearlvl);
-        printf("Grades: %.2f\n\n", trav->person.grades);
+    if(!isEmptyStack(s)) {
+        newNode* trav;
+        printf("\n\n-----Display-----\n");
+        for(trav = s->top; trav != NULL; trav = trav->next) {
+            printf("ID: %d\n", trav->person.id);
+            printf("First Name: %s\n", trav->person.fname);
+            printf("Last Name: %s\n", trav->person.lname);
+            printf("Course: %s\n", courseNames[trav->person.course]);
+            printf("Year lvl: %d\n", trav->person.yearlvl);
+            printf("Grades: %.2f\n\n", trav->person.grades);
+        }
+        printf("-----End Display-----\n\n");
     }
-    printf("-----End Display-----\n\n");
 }
 /*
 Queue* initQueue() {
