@@ -5,7 +5,15 @@
 // The Sacred Push Spell
 void push(Stack *s, Item i) {
  // [Task 1] To do code logic here ...
-
+    int newCell = allocNode(s->vs);
+    if(newCell != -1) {
+        s->vs->nodes[newCell].item = i;
+        s->vs->nodes[newCell].next = s->top;
+        s->top = newCell;
+        printf("Push '%c' (%.1f): SUCCESS (Total: %.1f/25.0)\n",  s->vs->nodes[newCell].item.itemName, s->vs->nodes[newCell].item.weight, s->vs->nodes[newCell].item.weight);
+        
+        
+    }
 
 
 }
