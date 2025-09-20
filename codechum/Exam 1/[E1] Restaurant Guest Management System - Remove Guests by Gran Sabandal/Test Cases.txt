@@ -1,0 +1,115 @@
+Test case 1
+INITIAL TABLE LIST
+Table Number [0]: [20] Tommy Villanueva |
+Table Number [1]: [15] Olivia Perez | [11] Karen Sy | [05] Ella Martinez | [02] Brian Cruz |
+Table Number [2]: [07] Grace Yu | [03] Catherine Lee | [10] Jack Rivera | [14] Nathan Cruz |
+Table Number [3]: [13] Mika Tanaka | [09] Isabelle Ong | [01] Alice Tan | [06] Frank Lim |
+Table Number [4]: [04] David Santos | [08] Henry Dela Cruz | [12] Leo Mendoza | [16] Paul Santos |
+Table Number [5]: [17] Queenie Lo |
+Table Number [6]: [18] Ryan Torres |
+Table Number [7]:
+Table Number [8]: [19] Sophia Wang |
+Table Number [9]:
+[1] Enter the ID of a guest to delete: 20
+[2] Enter the ID of a guest to delete: 17
+[3] Enter the ID of a guest to delete: 18
+[4] Enter the ID of a guest to delete: 19
+[5] Enter the ID of a guest to delete: 08
+AFTER REMOVE
+Table Number [0]:
+Table Number [1]: [15] Olivia Perez | [11] Karen Sy | [05] Ella Martinez | [02] Brian Cruz |
+Table Number [2]: [07] Grace Yu | [03] Catherine Lee | [10] Jack Rivera | [14] Nathan Cruz |
+Table Number [3]: [13] Mika Tanaka | [09] Isabelle Ong | [01] Alice Tan | [06] Frank Lim |
+Table Number [4]: [04] David Santos | [12] Leo Mendoza | [16] Paul Santos |
+Table Number [5]:
+Table Number [6]:
+Table Number [7]:
+Table Number [8]:
+Table Number [9]:
+
+Test case 2
+INITIAL TABLE LIST
+Table Number [0]: [20] Tommy Villanueva |
+Table Number [1]: [15] Olivia Perez | [11] Karen Sy | [05] Ella Martinez | [02] Brian Cruz |
+Table Number [2]: [07] Grace Yu | [03] Catherine Lee | [10] Jack Rivera | [14] Nathan Cruz |
+Table Number [3]: [13] Mika Tanaka | [09] Isabelle Ong | [01] Alice Tan | [06] Frank Lim |
+Table Number [4]: [04] David Santos | [08] Henry Dela Cruz | [12] Leo Mendoza | [16] Paul Santos |
+Table Number [5]: [17] Queenie Lo |
+Table Number [6]: [18] Ryan Torres |
+Table Number [7]:
+Table Number [8]: [19] Sophia Wang |
+Table Number [9]:
+[1] Enter the ID of a guest to delete: 04
+[2] Enter the ID of a guest to delete: 09
+[3] Enter the ID of a guest to delete: 100
+[4] Enter the ID of a guest to delete: 01
+[5] Enter the ID of a guest to delete: 19
+AFTER REMOVE
+Table Number [0]: [20] Tommy Villanueva |
+Table Number [1]: [15] Olivia Perez | [11] Karen Sy | [05] Ella Martinez | [02] Brian Cruz |
+Table Number [2]: [07] Grace Yu | [03] Catherine Lee | [10] Jack Rivera | [14] Nathan Cruz |
+Table Number [3]: [13] Mika Tanaka | [06] Frank Lim |
+Table Number [4]: [08] Henry Dela Cruz | [12] Leo Mendoza | [16] Paul Santos |
+Table Number [5]: [17] Queenie Lo |
+Table Number [6]: [18] Ryan Torres |
+Table Number [7]:
+Table Number [8]:
+Table Number [9]:
+
+Test case 3
+INITIAL TABLE LIST
+Table Number [0]: [20] Tommy Villanueva |
+Table Number [1]: [15] Olivia Perez | [11] Karen Sy | [05] Ella Martinez | [02] Brian Cruz |
+Table Number [2]: [07] Grace Yu | [03] Catherine Lee | [10] Jack Rivera | [14] Nathan Cruz |
+Table Number [3]: [13] Mika Tanaka | [09] Isabelle Ong | [01] Alice Tan | [06] Frank Lim |
+Table Number [4]: [04] David Santos | [08] Henry Dela Cruz | [12] Leo Mendoza | [16] Paul Santos |
+Table Number [5]: [17] Queenie Lo |
+Table Number [6]: [18] Ryan Torres |
+Table Number [7]:
+Table Number [8]: [19] Sophia Wang |
+Table Number [9]:
+[1] Enter the ID of a guest to delete: 200
+[2] Enter the ID of a guest to delete: 100
+[3] Enter the ID of a guest to delete: 300
+[4] Enter the ID of a guest to delete: 400
+[5] Enter the ID of a guest to delete: 500
+AFTER REMOVE
+Table Number [0]: [20] Tommy Villanueva |
+Table Number [1]: [15] Olivia Perez | [11] Karen Sy | [05] Ella Martinez | [02] Brian Cruz |
+Table Number [2]: [07] Grace Yu | [03] Catherine Lee | [10] Jack Rivera | [14] Nathan Cruz |
+Table Number [3]: [13] Mika Tanaka | [09] Isabelle Ong | [01] Alice Tan | [06] Frank Lim |
+Table Number [4]: [04] David Santos | [08] Henry Dela Cruz | [12] Leo Mendoza | [16] Paul Santos |
+Table Number [5]: [17] Queenie Lo |
+Table Number [6]: [18] Ryan Torres |
+Table Number [7]:
+Table Number [8]: [19] Sophia Wang |
+Table Number [9]:
+
+Test case 4
+INITIAL TABLE LIST
+Table Number [0]: [20] Tommy Villanueva |
+Table Number [1]: [15] Olivia Perez | [11] Karen Sy | [05] Ella Martinez | [02] Brian Cruz |
+Table Number [2]: [07] Grace Yu | [03] Catherine Lee | [10] Jack Rivera | [14] Nathan Cruz |
+Table Number [3]: [13] Mika Tanaka | [09] Isabelle Ong | [01] Alice Tan | [06] Frank Lim |
+Table Number [4]: [04] David Santos | [08] Henry Dela Cruz | [12] Leo Mendoza | [16] Paul Santos |
+Table Number [5]: [17] Queenie Lo |
+Table Number [6]: [18] Ryan Torres |
+Table Number [7]:
+Table Number [8]: [19] Sophia Wang |
+Table Number [9]:
+[1] Enter the ID of a guest to delete: 20
+[2] Enter the ID of a guest to delete: 17
+[3] Enter the ID of a guest to delete: 18
+[4] Enter the ID of a guest to delete: 19
+[5] Enter the ID of a guest to delete: 100
+AFTER REMOVE
+Table Number [0]:
+Table Number [1]: [15] Olivia Perez | [11] Karen Sy | [05] Ella Martinez | [02] Brian Cruz |
+Table Number [2]: [07] Grace Yu | [03] Catherine Lee | [10] Jack Rivera | [14] Nathan Cruz |
+Table Number [3]: [13] Mika Tanaka | [09] Isabelle Ong | [01] Alice Tan | [06] Frank Lim |
+Table Number [4]: [04] David Santos | [08] Henry Dela Cruz | [12] Leo Mendoza | [16] Paul Santos |
+Table Number [5]:
+Table Number [6]:
+Table Number [7]:
+Table Number [8]:
+Table Number [9]:
