@@ -1,0 +1,240 @@
+Test case 1
+Cursor-Based Stack Test Program
+Testing push() function implementation
+
+Initializing storage...
+Creating stack with max weight: 25.0
+Enter trial: 1
+
+=== TRIAL 1: Basic Push ===
+Push 'A' (5.5): SUCCESS (Total: 5.5/25.0)
+Expected: SUCCESS, top=0, weight=5.5
+Actual: top=0, weight=5.5
+
+Storage Visualization:
+Available nodes start at: 1
++-----+------+------+------+--------+
+| IDX | ITEM |WEIGHT| NEXT | STATUS |
++-----+------+------+------+--------+
+|   0 |  A   |  5.5 |   -1 |  USED  |
+|   1 |  --  |  --  |    2 |  FREE  |
+|   2 |  --  |  --  |    3 |  FREE  |
+|   3 |  --  |  --  |    4 |  FREE  |
+|   4 |  --  |  --  |    5 |  FREE  |
+|   5 |  --  |  --  |    6 |  FREE  |
+|   6 |  --  |  --  |    7 |  FREE  |
+|   7 |  --  |  --  |    8 |  FREE  |
+|   8 |  --  |  --  |    9 |  FREE  |
+|   9 |  --  |  --  |   -1 |  FREE  |
++-----+------+------+------+--------+
+
+Test case 2
+Cursor-Based Stack Test Program
+Testing push() function implementation
+
+Initializing storage...
+Creating stack with max weight: 25.0
+Enter trial: 2
+
+=== TRIAL 2: Multiple Push ===
+Push 'A' (5.5): SUCCESS (Total: 5.5/25.0)
+Push 'B' (8.2): SUCCESS (Total: 13.7/25.0)
+Push 'C' (7.0): SUCCESS (Total: 20.7/25.0)
+Expected: Chain C->B->A, weight=20.7
+Actual: top=2, weight=20.7
+Stack (top->bottom): C(7.0) -> B(8.2) -> A(5.5)
+Weight: 20.7 / 25.0
+
+Storage Visualization:
+Available nodes start at: 3
++-----+------+------+------+--------+
+| IDX | ITEM |WEIGHT| NEXT | STATUS |
++-----+------+------+------+--------+
+|   0 |  A   |  5.5 |   -1 |  USED  |
+|   1 |  B   |  8.2 |    0 |  USED  |
+|   2 |  C   |  7.0 |    1 |  USED  |
+|   3 |  --  |  --  |    4 |  FREE  |
+|   4 |  --  |  --  |    5 |  FREE  |
+|   5 |  --  |  --  |    6 |  FREE  |
+|   6 |  --  |  --  |    7 |  FREE  |
+|   7 |  --  |  --  |    8 |  FREE  |
+|   8 |  --  |  --  |    9 |  FREE  |
+|   9 |  --  |  --  |   -1 |  FREE  |
++-----+------+------+------+--------+
+
+Test case 3
+Cursor-Based Stack Test Program
+Testing push() function implementation
+
+Initializing storage...
+Creating stack with max weight: 25.0
+Enter trial: 3
+
+=== TRIAL 3: Weight Limit ===
+Push 'A' (5.5): SUCCESS (Total: 5.5/25.0)
+Push 'B' (8.2): SUCCESS (Total: 13.7/25.0)
+Push 'C' (7.0): SUCCESS (Total: 20.7/25.0)
+Push 'D' (4.3): SUCCESS (Total: 25.0/25.0)
+Expected: SUCCESS, weight=25.0 exactly
+Actual: weight=25.0
+
+Storage Visualization:
+Available nodes start at: 4
++-----+------+------+------+--------+
+| IDX | ITEM |WEIGHT| NEXT | STATUS |
++-----+------+------+------+--------+
+|   0 |  A   |  5.5 |   -1 |  USED  |
+|   1 |  B   |  8.2 |    0 |  USED  |
+|   2 |  C   |  7.0 |    1 |  USED  |
+|   3 |  D   |  4.3 |    2 |  USED  |
+|   4 |  --  |  --  |    5 |  FREE  |
+|   5 |  --  |  --  |    6 |  FREE  |
+|   6 |  --  |  --  |    7 |  FREE  |
+|   7 |  --  |  --  |    8 |  FREE  |
+|   8 |  --  |  --  |    9 |  FREE  |
+|   9 |  --  |  --  |   -1 |  FREE  |
++-----+------+------+------+--------+
+
+Test case 4
+Cursor-Based Stack Test Program
+Testing push() function implementation
+
+Initializing storage...
+Creating stack with max weight: 25.0
+Enter trial: 4
+
+=== TRIAL 4: Weight Overflow ===
+Push 'A' (5.5): SUCCESS (Total: 5.5/25.0)
+Push 'B' (8.2): SUCCESS (Total: 13.7/25.0)
+Push 'C' (7.0): SUCCESS (Total: 20.7/25.0)
+Push 'D' (4.3): SUCCESS (Total: 25.0/25.0)
+Attempting overflow:
+Push 'X' (0.1): FAILED - Weight limit exceeded
+Expected: FAILED, weight unchanged at 25.0
+Actual: weight=25.0
+
+Storage Visualization:
+Available nodes start at: 4
++-----+------+------+------+--------+
+| IDX | ITEM |WEIGHT| NEXT | STATUS |
++-----+------+------+------+--------+
+|   0 |  A   |  5.5 |   -1 |  USED  |
+|   1 |  B   |  8.2 |    0 |  USED  |
+|   2 |  C   |  7.0 |    1 |  USED  |
+|   3 |  D   |  4.3 |    2 |  USED  |
+|   4 |  --  |  --  |    5 |  FREE  |
+|   5 |  --  |  --  |    6 |  FREE  |
+|   6 |  --  |  --  |    7 |  FREE  |
+|   7 |  --  |  --  |    8 |  FREE  |
+|   8 |  --  |  --  |    9 |  FREE  |
+|   9 |  --  |  --  |   -1 |  FREE  |
++-----+------+------+------+--------+
+
+Test case 5
+Cursor-Based Stack Test Program
+Testing push() function implementation
+
+Initializing storage...
+Creating stack with max weight: 25.0
+Enter trial: 5
+
+=== TRIAL 5: Node Exhaustion ===
+Push 'a' (2.4): SUCCESS (Total: 2.4/25.0)
+Push 'b' (2.4): SUCCESS (Total: 4.8/25.0)
+Push 'c' (2.4): SUCCESS (Total: 7.2/25.0)
+Push 'd' (2.4): SUCCESS (Total: 9.6/25.0)
+Push 'e' (2.4): SUCCESS (Total: 12.0/25.0)
+Push 'f' (2.4): SUCCESS (Total: 14.4/25.0)
+Push 'g' (2.4): SUCCESS (Total: 16.8/25.0)
+Push 'h' (2.4): SUCCESS (Total: 19.2/25.0)
+Push 'i' (2.4): SUCCESS (Total: 21.6/25.0)
+Push 'j' (2.4): SUCCESS (Total: 24.0/25.0)
+Attempting when full:
+Push 'Z' (0.5): FAILED - No free nodes
+Expected: FAILED, no free nodes
+Actual: weight=24.0, nodes used=10
+
+Storage Visualization:
+Available nodes start at: -1
++-----+------+------+------+--------+
+| IDX | ITEM |WEIGHT| NEXT | STATUS |
++-----+------+------+------+--------+
+|   0 |  a   |  2.4 |   -1 |  USED  |
+|   1 |  b   |  2.4 |    0 |  USED  |
+|   2 |  c   |  2.4 |    1 |  USED  |
+|   3 |  d   |  2.4 |    2 |  USED  |
+|   4 |  e   |  2.4 |    3 |  USED  |
+|   5 |  f   |  2.4 |    4 |  USED  |
+|   6 |  g   |  2.4 |    5 |  USED  |
+|   7 |  h   |  2.4 |    6 |  USED  |
+|   8 |  i   |  2.4 |    7 |  USED  |
+|   9 |  j   |  2.4 |    8 |  USED  |
++-----+------+------+------+--------+
+
+Test case 6
+Cursor-Based Stack Test Program
+Testing push() function implementation
+
+Initializing storage...
+Creating stack with max weight: 25.0
+Enter trial: 6
+
+=== TRIAL 6: Edge Weights ===
+Push 'P' (10.0): SUCCESS (Total: 10.0/25.0)
+Push 'M' (0.0): SUCCESS (Total: 10.0/25.0)
+Push 'N' (-2.5): SUCCESS (Total: 7.5/25.0)
+Expected: All SUCCESS, final weight=7.5
+Actual: weight=7.5
+Stack (top->bottom): N(-2.5) -> M(0.0) -> P(10.0)
+Weight: 7.5 / 25.0
+
+Storage Visualization:
+Available nodes start at: 3
++-----+------+------+------+--------+
+| IDX | ITEM |WEIGHT| NEXT | STATUS |
++-----+------+------+------+--------+
+|   0 |  P   | 10.0 |   -1 |  USED  |
+|   1 |  M   |  0.0 |    0 |  USED  |
+|   2 |  N   | -2.5 |    1 |  USED  |
+|   3 |  --  |  --  |    4 |  FREE  |
+|   4 |  --  |  --  |    5 |  FREE  |
+|   5 |  --  |  --  |    6 |  FREE  |
+|   6 |  --  |  --  |    7 |  FREE  |
+|   7 |  --  |  --  |    8 |  FREE  |
+|   8 |  --  |  --  |    9 |  FREE  |
+|   9 |  --  |  --  |   -1 |  FREE  |
++-----+------+------+------+--------+
+
+Test case 7
+Cursor-Based Stack Test Program
+Testing push() function implementation
+
+Initializing storage...
+Creating stack with max weight: 25.0
+Enter trial: 7
+
+=== TRIAL 7: Memory Analysis ===
+Push 'X' (3.0): SUCCESS (Total: 3.0/25.0)
+Push 'Y' (4.5): SUCCESS (Total: 7.5/25.0)
+Push 'Z' (2.8): SUCCESS (Total: 10.3/25.0)
+Expected: Chain Z->Y->X, weight=10.3
+Actual: top=2, weight=10.3
+Stack (top->bottom): Z(2.8) -> Y(4.5) -> X(3.0)
+Weight: 10.3 / 25.0
+
+Storage Visualization:
+Available nodes start at: 3
++-----+------+------+------+--------+
+| IDX | ITEM |WEIGHT| NEXT | STATUS |
++-----+------+------+------+--------+
+|   0 |  X   |  3.0 |   -1 |  USED  |
+|   1 |  Y   |  4.5 |    0 |  USED  |
+|   2 |  Z   |  2.8 |    1 |  USED  |
+|   3 |  --  |  --  |    4 |  FREE  |
+|   4 |  --  |  --  |    5 |  FREE  |
+|   5 |  --  |  --  |    6 |  FREE  |
+|   6 |  --  |  --  |    7 |  FREE  |
+|   7 |  --  |  --  |    8 |  FREE  |
+|   8 |  --  |  --  |    9 |  FREE  |
+|   9 |  --  |  --  |   -1 |  FREE  |
++-----+------+------+------+--------+
