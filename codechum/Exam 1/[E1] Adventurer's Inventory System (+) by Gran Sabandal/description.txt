@@ -1,0 +1,122 @@
+The Story
+Deep in the Whispering Mountains, brave adventurer Kira discovered the legendary Shadowscale Dragon's treasure hoard. The ancient dragon vanished centuries ago, leaving behind countless magical artifacts scattered throughout the cavern.
+
+Kira carries a Mystic Satchel - a special backpack enchanted by the ancient Guild of Artificers. This magical bag has unique properties that help adventurers manage their treasure efficiently during dangerous expeditions.
+
+However, the cavern is unstable. Falling rocks threaten to seal the entrance forever! Kira must quickly decide which treasures to take, but the Mystic Satchel has magical limitations she must respect.
+
+The Mystic Satchel's Magic
+The Guild of Artificers designed the satchel with these enchantments:
+
+The Weight Ward
+Maximum burden: 25.0 mystical units
+Overload protection: Automatically rejects items that would exceed the limit
+Weight sensing: Always displays current load
+The Stacking Charm
+Last-in, first-out access: Only the topmost treasure can be quickly grabbed
+Deep items: Buried treasures require unpacking everything above them
+Strategic packing: Choose wisely what goes on top!
+The Spatial Binding
+Limited slots: Maximum 10 magical storage compartments
+Cursor-based magic: Uses ancient linking spells for efficiency
+Full capacity protection: Rejects items when all slots are occupied
+Your Quest
+As the Guild's apprentice programmer, you must implement the satchel's treasure pickup enchantment == push()
+
+Sample Output 1
+
+Cursor-Based Stack Test Program
+Testing push() function implementation
+
+Initializing storage...
+Creating stack with max weight: 25.0
+Enter trial: 1
+
+=== TRIAL 1: Basic Push ===
+Push 'A' (5.5): SUCCESS (Total: 5.5/25.0)
+Expected: SUCCESS, top=0, weight=5.5
+Actual: top=0, weight=5.5
+
+Storage Visualization:
+Available nodes start at: 1
++-----+------+------+------+--------+
+| IDX | ITEM |WEIGHT| NEXT | STATUS |
++-----+------+------+------+--------+
+|   0 |  A   |  5.5 |   -1 |  USED  |
+|   1 |  --  |  --  |    2 |  FREE  |
+|   2 |  --  |  --  |    3 |  FREE  |
+|   3 |  --  |  --  |    4 |  FREE  |
+|   4 |  --  |  --  |    5 |  FREE  |
+|   5 |  --  |  --  |    6 |  FREE  |
+|   6 |  --  |  --  |    7 |  FREE  |
+|   7 |  --  |  --  |    8 |  FREE  |
+|   8 |  --  |  --  |    9 |  FREE  |
+|   9 |  --  |  --  |   -1 |  FREE  |
++-----+------+------+------+--------+
+Sample Output 2
+
+Cursor-Based Stack Test Program
+Testing push() function implementation
+
+Initializing storage...
+Creating stack with max weight: 25.0
+Enter trial: 2
+
+=== TRIAL 2: Multiple Push ===
+Push 'A' (5.5): SUCCESS (Total: 5.5/25.0)
+Push 'B' (8.2): SUCCESS (Total: 13.7/25.0)
+Push 'C' (7.0): SUCCESS (Total: 20.7/25.0)
+Expected: Chain C->B->A, weight=20.7
+Actual: top=2, weight=20.7
+Stack (top->bottom): C(7.0) -> B(8.2) -> A(5.5)
+Weight: 20.7 / 25.0
+
+Storage Visualization:
+Available nodes start at: 3
++-----+------+------+------+--------+
+| IDX | ITEM |WEIGHT| NEXT | STATUS |
++-----+------+------+------+--------+
+|   0 |  A   |  5.5 |   -1 |  USED  |
+|   1 |  B   |  8.2 |    0 |  USED  |
+|   2 |  C   |  7.0 |    1 |  USED  |
+|   3 |  --  |  --  |    4 |  FREE  |
+|   4 |  --  |  --  |    5 |  FREE  |
+|   5 |  --  |  --  |    6 |  FREE  |
+|   6 |  --  |  --  |    7 |  FREE  |
+|   7 |  --  |  --  |    8 |  FREE  |
+|   8 |  --  |  --  |    9 |  FREE  |
+|   9 |  --  |  --  |   -1 |  FREE  |
++-----+------+------+------+--------+
+Sample Output 3
+
+Cursor-Based Stack Test Program
+Testing push() function implementation
+
+Initializing storage...
+Creating stack with max weight: 25.0
+Enter trial: 3
+
+=== TRIAL 3: Weight Limit ===
+Push 'A' (5.5): SUCCESS (Total: 5.5/25.0)
+Push 'B' (8.2): SUCCESS (Total: 13.7/25.0)
+Push 'C' (7.0): SUCCESS (Total: 20.7/25.0)
+Push 'D' (4.3): SUCCESS (Total: 25.0/25.0)
+Expected: SUCCESS, weight=25.0 exactly
+Actual: weight=25.0
+
+Storage Visualization:
+Available nodes start at: 4
++-----+------+------+------+--------+
+| IDX | ITEM |WEIGHT| NEXT | STATUS |
++-----+------+------+------+--------+
+|   0 |  A   |  5.5 |   -1 |  USED  |
+|   1 |  B   |  8.2 |    0 |  USED  |
+|   2 |  C   |  7.0 |    1 |  USED  |
+|   3 |  D   |  4.3 |    2 |  USED  |
+|   4 |  --  |  --  |    5 |  FREE  |
+|   5 |  --  |  --  |    6 |  FREE  |
+|   6 |  --  |  --  |    7 |  FREE  |
+|   7 |  --  |  --  |    8 |  FREE  |
+|   8 |  --  |  --  |    9 |  FREE  |
+|   9 |  --  |  --  |   -1 |  FREE  |
++-----+------+------+------+--------+
