@@ -1,0 +1,335 @@
+Test case 1
+Enter test case choice: 1
+=== Circular Queue Demo (front=-1, rear=-1 when empty) ===
+
+1. Initial empty queue:
+Q {}
+
++-------+--------+----------+
+| INDEX |  DATA  |   REF    |
++-------+--------+----------+
+|     0 |        |          |
+|     1 |        |          |
+|     2 |        |          |
+|     3 |        |          |
+|     4 |        |          |
+|     5 |        |          |
+|     6 |        |          |
+|     7 |        |          |
+|     8 |        |          |
+|     9 |        |          |
++-------+--------+----------+
+Front: -1, Rear: -1
+isEmpty: true, isFull: false
+
+Test case 2
+Enter test case choice: 2
+=== Circular Queue Demo (front=-1, rear=-1 when empty) ===
+
+2. Enqueue first element (must go to index 0):
+Q {10}
+
++-------+--------+----------+
+| INDEX |  DATA  |   REF    |
++-------+--------+----------+
+|     0 |     10 | F,R      |
+|     1 |        |          |
+|     2 |        |          |
+|     3 |        |          |
+|     4 |        |          |
+|     5 |        |          |
+|     6 |        |          |
+|     7 |        |          |
+|     8 |        |          |
+|     9 |        |          |
++-------+--------+----------+
+Front: 0, Rear: 0
+Front element: 10
+Front == Rear: true (contains 1 element)
+isEmpty: false, isFull: false
+
+Test case 3
+Enter test case choice: 3
+=== Circular Queue Demo (front=-1, rear=-1 when empty) ===
+
+3. Enqueue more elements:
+Q {10, 20, 30, 40}
+
++-------+--------+----------+
+| INDEX |  DATA  |   REF    |
++-------+--------+----------+
+|     0 |     10 | F        |
+|     1 |     20 |          |
+|     2 |     30 |          |
+|     3 |     40 | R        |
+|     4 |        |          |
+|     5 |        |          |
+|     6 |        |          |
+|     7 |        |          |
+|     8 |        |          |
+|     9 |        |          |
++-------+--------+----------+
+Front: 0, Rear: 3
+isEmpty: false, isFull: false
+
+Test case 4
+Enter test case choice: 4
+=== Circular Queue Demo (front=-1, rear=-1 when empty) ===
+
+4. Fill the queue completely:
+Q {10, 20, 30, 40, 50, 60, 70, 80, 90, 100}
+
++-------+--------+----------+
+| INDEX |  DATA  |   REF    |
++-------+--------+----------+
+|     0 |     10 | F        |
+|     1 |     20 |          |
+|     2 |     30 |          |
+|     3 |     40 |          |
+|     4 |     50 |          |
+|     5 |     60 |          |
+|     6 |     70 |          |
+|     7 |     80 |          |
+|     8 |     90 |          |
+|     9 |    100 | R        |
++-------+--------+----------+
+Front: 0, Rear: 9
+isEmpty: false, isFull: true
+
+Test case 5
+Enter test case choice: 5
+=== Circular Queue Demo (front=-1, rear=-1 when empty) ===
+
+5. Try to enqueue when full:
+Queue is full! Cannot enqueue 110.
+Q {10, 20, 30, 40, 50, 60, 70, 80, 90, 100}
+
++-------+--------+----------+
+| INDEX |  DATA  |   REF    |
++-------+--------+----------+
+|     0 |     10 | F        |
+|     1 |     20 |          |
+|     2 |     30 |          |
+|     3 |     40 |          |
+|     4 |     50 |          |
+|     5 |     60 |          |
+|     6 |     70 |          |
+|     7 |     80 |          |
+|     8 |     90 |          |
+|     9 |    100 | R        |
++-------+--------+----------+
+Front: 0, Rear: 9
+isEmpty: false, isFull: true
+Expected Output
+
+Enter test case choice: 5
+=== Circular Queue Demo (front=-1, rear=-1 when empty) ===
+
+5. Try to enqueue when full:
+Queue is full! Cannot enqueue 110.
+Q {10, 20, 30, 40, 50, 60, 70, 80, 90, 100}
+
++-------+--------+----------+
+| INDEX |  DATA  |   REF    |
++-------+--------+----------+
+|     0 |     10 | F        |
+|     1 |     20 |          |
+|     2 |     30 |          |
+|     3 |     40 |          |
+|     4 |     50 |          |
+|     5 |     60 |          |
+|     6 |     70 |          |
+|     7 |     80 |          |
+|     8 |     90 |          |
+|     9 |    100 | R        |
++-------+--------+----------+
+Front: 0, Rear: 9
+isEmpty: false, isFull: true
+
+Test case 6
+Enter test case choice: 6
+=== Circular Queue Demo (front=-1, rear=-1 when empty) ===
+
+
+6. Dequeue some elements:
+Dequeued: 10
+Dequeued: 20
+Dequeued: 30
+Q {40, 50, 60, 70, 80, 90, 100}
+
++-------+--------+----------+
+| INDEX |  DATA  |   REF    |
++-------+--------+----------+
+|     0 |        |          |
+|     1 |        |          |
+|     2 |        |          |
+|     3 |     40 | F        |
+|     4 |     50 |          |
+|     5 |     60 |          |
+|     6 |     70 |          |
+|     7 |     80 |          |
+|     8 |     90 |          |
+|     9 |    100 | R        |
++-------+--------+----------+
+Front: 3, Rear: 9
+isEmpty: false, isFull: false
+
+Test case 7
+Enter test case choice: 7
+=== Circular Queue Demo (front=-1, rear=-1 when empty) ===
+
+
+7. Enqueue to demonstrate circular nature:
+Q {40, 50, 60, 70, 80, 90, 100, 200, 300, 400}
+
++-------+--------+----------+
+| INDEX |  DATA  |   REF    |
++-------+--------+----------+
+|     0 |    200 |          |
+|     1 |    300 |          |
+|     2 |    400 | R        |
+|     3 |     40 | F        |
+|     4 |     50 |          |
+|     5 |     60 |          |
+|     6 |     70 |          |
+|     7 |     80 |          |
+|     8 |     90 |          |
+|     9 |    100 |          |
++-------+--------+----------+
+Front: 3, Rear: 2
+isEmpty: false, isFull: true
+
+Test case 8
+Enter test case choice: 8
+=== Circular Queue Demo (front=-1, rear=-1 when empty) ===
+
+
+8. Dequeue all elements to make empty:
+Dequeued: 40
+Dequeued: 50
+Dequeued: 60
+Dequeued: 70
+Dequeued: 80
+Dequeued: 90
+Dequeued: 100
+Dequeued: 200
+Dequeued: 300
+Dequeued: 400
+Q {}
+
++-------+--------+----------+
+| INDEX |  DATA  |   REF    |
++-------+--------+----------+
+|     0 |        |          |
+|     1 |        |          |
+|     2 |        |          |
+|     3 |        |          |
+|     4 |        |          |
+|     5 |        |          |
+|     6 |        |          |
+|     7 |        |          |
+|     8 |        |          |
+|     9 |        |          |
++-------+--------+----------+
+Front: -1, Rear: -1
+isEmpty: true, isFull: false
+
+Test case 9
+Enter test case choice: 9
+=== Circular Queue Demo (front=-1, rear=-1 when empty) ===
+
+
+9. Try to dequeue from empty queue:
+Dequeued: 40
+Dequeued: 50
+Dequeued: 60
+Dequeued: 70
+Dequeued: 80
+Dequeued: 90
+Dequeued: 100
+Dequeued: 200
+Dequeued: 300
+Dequeued: 400
+Queue is empty! Cannot dequeue.
+Q {}
+
++-------+--------+----------+
+| INDEX |  DATA  |   REF    |
++-------+--------+----------+
+|     0 |        |          |
+|     1 |        |          |
+|     2 |        |          |
+|     3 |        |          |
+|     4 |        |          |
+|     5 |        |          |
+|     6 |        |          |
+|     7 |        |          |
+|     8 |        |          |
+|     9 |        |          |
++-------+--------+----------+
+Front: -1, Rear: -1
+isEmpty: true, isFull: false
+
+Test case 10
+Enter test case choice: 10
+=== Circular Queue Demo (front=-1, rear=-1 when empty) ===
+
+
+10. Test first element always goes to index 0:
+Dequeued: 40
+Dequeued: 50
+Dequeued: 60
+Dequeued: 70
+Dequeued: 80
+Dequeued: 90
+Dequeued: 100
+Dequeued: 200
+Dequeued: 300
+Dequeued: 400
+Queue is empty! Cannot dequeue.
+Q {999}
+
++-------+--------+----------+
+| INDEX |  DATA  |   REF    |
++-------+--------+----------+
+|     0 |    999 | F,R      |
+|     1 |        |          |
+|     2 |        |          |
+|     3 |        |          |
+|     4 |        |          |
+|     5 |        |          |
+|     6 |        |          |
+|     7 |        |          |
+|     8 |        |          |
+|     9 |        |          |
++-------+--------+----------+
+Front: 0, Rear: 0
+First element is at index: 0 (should be 0)
+Front == Rear: true (contains 1 element)
+
+Test case 11
+Enter test case choice: 11
+=== Circular Queue Demo (front=-1, rear=-1 when empty) ===
+
+
+11. Test makeEmpty function:
+Before makeEmpty:
+Q {111, 222}
+After makeEmpty:
+Q {}
+
++-------+--------+----------+
+| INDEX |  DATA  |   REF    |
++-------+--------+----------+
+|     0 |        |          |
+|     1 |        |          |
+|     2 |        |          |
+|     3 |        |          |
+|     4 |        |          |
+|     5 |        |          |
+|     6 |        |          |
+|     7 |        |          |
+|     8 |        |          |
+|     9 |        |          |
++-------+--------+----------+
+Front: -1, Rear: -1
