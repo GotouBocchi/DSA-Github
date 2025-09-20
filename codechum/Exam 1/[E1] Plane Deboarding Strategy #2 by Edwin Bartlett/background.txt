@@ -1,0 +1,281 @@
+Introduction
+Ever notice how inefficient deboarding a plane can be? This comes down to a single bottleneck: the aisle. While getting off a plane might seem simple, the process is a complex puzzle involving people, luggage, and a single exit path. Passengers in window seats must wait for those in middle and aisle seats to retrieve their belongings and exit first, creating a domino effect of delays.
+
+ 
+
+A 2014 Northwestern study found that structured strategies could reduce deboarding time by over 35%. They are designed to minimize these wait times and bottlenecks, getting the aircraft ready for its next flight much faster. Your task today is to simulate a deboarding algorithm using the Array Stack data structure.
+
+ 
+
+Your Task
+Create the following helper functions in helpers.c for each version of Array Stack. You must complete this so that the Boarding Lists will be initialized properly in main. (NOTE: getting this correctly will already give you half the points!)
+void initializeStack_v1(Group* g);
+bool isFull_v1(Group* g);
+bool isEmpty_v1(Group* g);
+void push_v1(Group* g, char* value);
+void pop_v1(Group* g);
+void initializeStack_v2(Group* g);
+bool isFull_v2(Group* g);
+bool isEmpty_v2(Group* g);
+void push_v2(Group* g, char* value);
+void pop_v2(Group* g);
+Create function void deplanePassengers(BoardingList* list); in deplane.c - This will contain the logic for the deboarding algorithm described below.
+ 
+
+Deboarding algorithm
+The aircraft has two groups of three seats per row.
+Group ABC uses Array Stack v1 (bottom is A) while group DEF uses Array Stack v2 (bottom is F).
+Passengers are deplaned in batches. Each batch must consist of groups of seats that are at least two rows apart, with only one group per row.
+Begin with the left group in row 1 by popping all passengers from the group.
+The next group will be from the opposite side of the aircraft (right side).
+This alternating pattern (left, then right) continues, moving down the rows. If a group on the opposite side is empty, proceed to the group on the same side as the previous non-empty group, then resume the alternating pattern.
+This process continues until all passengers have been deplaned and all rows have been checked.
+ 
+
+Example Simulation
+
+
+
+
+
+
+Sample Output 1
+
+Select a boarding list to initialize:
+1. Mixed passengers
+2. More passengers, different distribution
+3. Fewer passengers, clustered at the back
+4. All seats full
+Enter your choice (1-4): 1
+Populating boarding list 1...
+Boarding list 1 populated with 22 passengers.
+
+--- Current Boarding List State ---
+
+     A        B        C       |   D        E        F
+  ----------------------------------------------------------
+1 | John     Mary     Bob      |  -        Sam      Eve
+2 | Linda    -        -        |  -        Tom      Alice
+3 | Peter    Jane     -        |  -        -        -
+4 | -        -        -        |  -        -        -
+5 | Chris    Anna     -        |  Tim      Sue      Mike
+6 | David    -        -        |  -        Rob      Kate
+7 | -        -        -        |  -        -        -
+8 | Sammy    Liz      -        |  -        Paul     Nancy
+   ---------------------------------------------------------
+
+Total passengers remaining: 22
+-----------------------------------
+
+Select an action:
+1. Deplane passengers
+2. Display boarding list
+0. Exit
+Enter your choice: 1
+
+Deplaning passengers...
+Deplaning Bob from row 1, seat ABC
+Deplaning Mary from row 1, seat ABC
+Deplaning John from row 1, seat ABC
+Deplaning Tim from row 5, seat DEF
+Deplaning Sue from row 5, seat DEF
+Deplaning Mike from row 5, seat DEF
+Deplaning Liz from row 8, seat ABC
+Deplaning Sammy from row 8, seat ABC
+Deplaning Sam from row 1, seat DEF
+Deplaning Eve from row 1, seat DEF
+Deplaning Anna from row 5, seat ABC
+Deplaning Chris from row 5, seat ABC
+Deplaning Paul from row 8, seat DEF
+Deplaning Nancy from row 8, seat DEF
+Deplaning Linda from row 2, seat ABC
+Deplaning Rob from row 6, seat DEF
+Deplaning Kate from row 6, seat DEF
+Deplaning Tom from row 2, seat DEF
+Deplaning Alice from row 2, seat DEF
+Deplaning David from row 6, seat ABC
+Deplaning Jane from row 3, seat ABC
+Deplaning Peter from row 3, seat ABC
+
+All passengers have been deplaned.
+
+--- Current Boarding List State ---
+
+     A        B        C       |   D        E        F
+  ----------------------------------------------------------
+1 | -        -        -        |  -        -        -
+2 | -        -        -        |  -        -        -
+3 | -        -        -        |  -        -        -
+4 | -        -        -        |  -        -        -
+5 | -        -        -        |  -        -        -
+6 | -        -        -        |  -        -        -
+7 | -        -        -        |  -        -        -
+8 | -        -        -        |  -        -        -
+   ---------------------------------------------------------
+
+Total passengers remaining: 0
+-----------------------------------
+
+Select an action:
+1. Deplane passengers
+2. Display boarding list
+0. Exit
+Enter your choice: 0
+Exiting program.
+Sample Output 2
+
+Select a boarding list to initialize:
+1. Mixed passengers
+2. More passengers, different distribution
+3. Fewer passengers, clustered at the back
+4. All seats full
+Enter your choice (1-4): 2
+Populating boarding list 2...
+Boarding list 2 populated with 24 passengers.
+
+--- Current Boarding List State ---
+
+     A        B        C       |   D        E        F
+  ----------------------------------------------------------
+1 | Alice    Ben      -        |  -        Diana    Carl
+2 | Eli      Fay      Gina     |  -        -        Hank
+3 | -        -        -        |  -        Jack     Ivy
+4 | Kim      Leo      -        |  -        -        Mona
+5 | Nina     -        -        |  -        -        Oscar
+6 | Pam      Quinn    -        |  Ted      Sue      Ray
+7 | Uma      -        -        |  -        -        -
+8 | -        -        -        |  Xena     Will     Vic
+   ---------------------------------------------------------
+
+Total passengers remaining: 24
+-----------------------------------
+
+Select an action:
+1. Deplane passengers
+2. Display boarding list
+0. Exit
+Enter your choice: 1
+
+Deplaning passengers...
+Deplaning Ben from row 1, seat ABC
+Deplaning Alice from row 1, seat ABC
+Deplaning Mona from row 4, seat DEF
+Deplaning Uma from row 7, seat ABC
+Deplaning Diana from row 1, seat DEF
+Deplaning Carl from row 1, seat DEF
+Deplaning Leo from row 4, seat ABC
+Deplaning Kim from row 4, seat ABC
+Deplaning Xena from row 8, seat DEF
+Deplaning Will from row 8, seat DEF
+Deplaning Vic from row 8, seat DEF
+Deplaning Gina from row 2, seat ABC
+Deplaning Fay from row 2, seat ABC
+Deplaning Eli from row 2, seat ABC
+Deplaning Oscar from row 5, seat DEF
+Deplaning Hank from row 2, seat DEF
+Deplaning Nina from row 5, seat ABC
+Deplaning Jack from row 3, seat DEF
+Deplaning Ivy from row 3, seat DEF
+Deplaning Quinn from row 6, seat ABC
+Deplaning Pam from row 6, seat ABC
+Deplaning Ted from row 6, seat DEF
+Deplaning Sue from row 6, seat DEF
+Deplaning Ray from row 6, seat DEF
+
+All passengers have been deplaned.
+
+--- Current Boarding List State ---
+
+     A        B        C       |   D        E        F
+  ----------------------------------------------------------
+1 | -        -        -        |  -        -        -
+2 | -        -        -        |  -        -        -
+3 | -        -        -        |  -        -        -
+4 | -        -        -        |  -        -        -
+5 | -        -        -        |  -        -        -
+6 | -        -        -        |  -        -        -
+7 | -        -        -        |  -        -        -
+8 | -        -        -        |  -        -        -
+   ---------------------------------------------------------
+
+Total passengers remaining: 0
+-----------------------------------
+
+Select an action:
+1. Deplane passengers
+2. Display boarding list
+0. Exit
+Enter your choice: 0
+Exiting program.
+Sample Output 3
+
+Select a boarding list to initialize:
+1. Mixed passengers
+2. More passengers, different distribution
+3. Fewer passengers, clustered at the back
+4. All seats full
+Enter your choice (1-4): 3
+Populating boarding list 3...
+Boarding list 3 populated with 11 passengers.
+
+--- Current Boarding List State ---
+
+     A        B        C       |   D        E        F
+  ----------------------------------------------------------
+1 | -        -        -        |  -        -        -
+2 | -        -        -        |  -        -        -
+3 | -        -        -        |  -        -        -
+4 | -        -        -        |  -        -        -
+5 | Zack     -        -        |  -        -        Yara
+6 | Wendy    Vera     -        |  -        -        Ulysses
+7 | Tim      -        -        |  -        -        Sophie
+8 | Ron      Quincy   -        |  -        Olga     Pat
+   ---------------------------------------------------------
+
+Total passengers remaining: 11
+-----------------------------------
+
+Select an action:
+1. Deplane passengers
+2. Display boarding list
+0. Exit
+Enter your choice: 1
+
+Deplaning passengers...
+Deplaning Zack from row 5, seat ABC
+Deplaning Olga from row 8, seat DEF
+Deplaning Pat from row 8, seat DEF
+Deplaning Yara from row 5, seat DEF
+Deplaning Quincy from row 8, seat ABC
+Deplaning Ron from row 8, seat ABC
+Deplaning Vera from row 6, seat ABC
+Deplaning Wendy from row 6, seat ABC
+Deplaning Ulysses from row 6, seat DEF
+Deplaning Tim from row 7, seat ABC
+Deplaning Sophie from row 7, seat DEF
+
+All passengers have been deplaned.
+
+--- Current Boarding List State ---
+
+     A        B        C       |   D        E        F
+  ----------------------------------------------------------
+1 | -        -        -        |  -        -        -
+2 | -        -        -        |  -        -        -
+3 | -        -        -        |  -        -        -
+4 | -        -        -        |  -        -        -
+5 | -        -        -        |  -        -        -
+6 | -        -        -        |  -        -        -
+7 | -        -        -        |  -        -        -
+8 | -        -        -        |  -        -        -
+   ---------------------------------------------------------
+
+Total passengers remaining: 0
+-----------------------------------
+
+Select an action:
+1. Deplane passengers
+2. Display boarding list
+0. Exit
+Enter your choice: 0
+Exiting program.
