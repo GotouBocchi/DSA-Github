@@ -1,0 +1,115 @@
+Background
+You are required to implement the enqueue and dequeue functions for a circular queue data structure. The queue uses a static array with specific behavior rules.
+
+ 
+
+Queue Behavior Rules
+IMPORTANT: Your implementation must follow these exact specifications:
+
+Empty State Convention: When the queue is empty: front = -1 and rear = -1
+First Element Rule: The first element enqueued to an empty queue MUST be placed at index 0
+Both front and rear should be set to 0 for the first element
+Single Element State: When the queue contains exactly one element: front == rear
+Full Condition: The queue is full when front is ahead of rear by 1 position (considering circular wraparound)
+Formula: (rear + 1) % MAX_SIZE == front && front != -1
+Circular Behavior: Use modulo arithmetic for wraparound: (index + 1) % MAX_SIZE
+Empty Transition: When dequeuing the last element (when front == rear), reset both to -1
+ 
+
+Given Helper Functions (Using this will not guarantee full credit points)
+The following functions are already implemented and available for use:
+
+Queue newQueue(); // Initializes queue as an empty state
+
+bool isEmpty(Queue q); // Returns true if queue is empty
+
+bool isFull(Queue q); // Returns true if queue is full
+
+void makeEmpty(Queue *q); // Sets the queue in an empty state
+
+(Note: These are helper functions no need to implement.)
+
+ 
+
+Task 1: Implement enqueue
+Complete the enqueue function that adds an integer element to the rear of the queue.
+
+ 
+
+Task 2: Implement dequeue
+Complete the dequeue function that removes and returns the element from the front of the queue.
+
+Sample Output 1
+
+Enter test case choice: 1
+=== Circular Queue Demo (front=-1, rear=-1 when empty) ===
+
+1. Initial empty queue:
+Q {}
+
++-------+--------+----------+
+| INDEX |  DATA  |   REF    |
++-------+--------+----------+
+|     0 |        |          |
+|     1 |        |          |
+|     2 |        |          |
+|     3 |        |          |
+|     4 |        |          |
+|     5 |        |          |
+|     6 |        |          |
+|     7 |        |          |
+|     8 |        |          |
+|     9 |        |          |
++-------+--------+----------+
+Front: -1, Rear: -1
+isEmpty: true, isFull: false
+Sample Output 2
+
+Enter test case choice: 2
+=== Circular Queue Demo (front=-1, rear=-1 when empty) ===
+
+2. Enqueue first element (must go to index 0):
+Q {10}
+
++-------+--------+----------+
+| INDEX |  DATA  |   REF    |
++-------+--------+----------+
+|     0 |     10 | F,R      |
+|     1 |        |          |
+|     2 |        |          |
+|     3 |        |          |
+|     4 |        |          |
+|     5 |        |          |
+|     6 |        |          |
+|     7 |        |          |
+|     8 |        |          |
+|     9 |        |          |
++-------+--------+----------+
+Front: 0, Rear: 0
+Front element: 10
+Front == Rear: true (contains 1 element)
+isEmpty: false, isFull: false
+Sample Output 3
+
+Enter test case choice: 3
+=== Circular Queue Demo (front=-1, rear=-1 when empty) ===
+
+3. Enqueue more elements:
+Q {10, 20, 30, 40}
+
++-------+--------+----------+
+| INDEX |  DATA  |   REF    |
++-------+--------+----------+
+|     0 |     10 | F        |
+|     1 |     20 |          |
+|     2 |     30 |          |
+|     3 |     40 | R        |
+|     4 |        |          |
+|     5 |        |          |
+|     6 |        |          |
+|     7 |        |          |
+|     8 |        |          |
+|     9 |        |          |
++-------+--------+----------+
+Front: 0, Rear: 3
+isEmpty: false, isFull: false
