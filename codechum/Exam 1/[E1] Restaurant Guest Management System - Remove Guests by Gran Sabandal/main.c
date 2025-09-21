@@ -6,6 +6,28 @@
 void removeGuests(guest G[], int numGuests, table T[])
 {
     // TASK 1: To do code....
+    tableNode* temp;
+    int i, x = 0;
+    tableNode* trav;
+    for(i = 0; i < NUMTABLES; i++) {
+        for(trav = T[i].front; trav != NULL; trav = trav->nextTable) {
+            printf(" %d ", i);
+            if(strcmp(G[x].guestID, trav->G.guestID) == 0){
+                printf("%d %d", trav, T[i].front);
+                if(trav == T[i].front) {
+                    T[i].front = trav->nextTable;
+                    temp = trav;
+                    free(temp);
+                    x++;
+                } else {
+                    temp = trav;
+                    trav = temp->nextTable;
+                    free(temp);
+                    x++;
+                }
+            }
+        }
+    }
     
 
 }
