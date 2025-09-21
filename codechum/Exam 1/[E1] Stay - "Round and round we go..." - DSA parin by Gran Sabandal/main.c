@@ -6,8 +6,7 @@
 void enqueue(Queue *q, int elem) {
     // [1.] To do code logic here ... (approximately 10 - 12 minutes)
     if(isEmpty(*q)) {
-        q->rear = (q->rear + 1) % MAX_SIZE;
-        q->front = (q->front + 1) % MAX_SIZE;
+        q->rear = q->front += 1 % MAX_SIZE;
         q->array[q->rear] = elem; 
     } 
     else if(!isFull(*q)) {
@@ -17,30 +16,25 @@ void enqueue(Queue *q, int elem) {
     else if(isFull(*q)){
         printf("Queue is full! Cannot enqueue %d.\n", elem);
     } 
-        
 }
 
 // Remove and return element from front of queue
 int dequeue(Queue *q) {
     // [2.] To do code logic here ... (approximately 10 - 12 minutes)
     //      Change return -1 actual value, -1 denotes no item to return.
-
     if(q->rear != q->front) {
         q->front = (q->front + 1) % MAX_SIZE;
         return q->array[(q->front - 1 + MAX_SIZE) % MAX_SIZE];
     } 
-    else if(q->rear == -1){
+    else if(isEmpty(*q)){
         printf("Queue is empty! Cannot dequeue.\n");
         return -1;
     }
     else if(q->rear == q->front) {
         int elem = q->array[q->front];
-        q->rear = -1;
-        q->front = -1;
+        q->rear = q->front = -1;
         return elem;
     }
-    
-        
 }
 
 // Test function to demonstrate the queue operations
