@@ -17,11 +17,9 @@ void removeGuests(guest G[], int numGuests, table T[])
         for(trav = T[i].front; trav != NULL; trav = trav->nextTable) {
             for(x = 0; x < numGuests; x++) {
                 if(strcmp(G[x].guestID, trav->G.guestID) == 0){
-                    if(trav == T[i].front) {
-                        T[i].front = trav->nextTable;
-                        temp = trav;
-                        free(temp);
-                    }
+                    T[i].front = trav->nextTable;
+                    temp = trav;
+                    free(temp);
                 }
                 else if(trav->nextTable != NULL && strcmp(G[x].guestID, trav->nextTable->G.guestID) == 0) {
                     temp = trav->nextTable;
