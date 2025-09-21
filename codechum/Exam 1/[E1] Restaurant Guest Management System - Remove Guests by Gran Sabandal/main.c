@@ -3,6 +3,10 @@
 #include <string.h>
 #include "guest.h"
 
+#include <stdio.h>
+#include <stdlib.h>
+#include "guest.h"   // assuming this defines guest, table, and node structures
+
 void removeGuests(guest G[], int numGuests, table T[])
 {
     // TASK 1: To do code....
@@ -11,25 +15,22 @@ void removeGuests(guest G[], int numGuests, table T[])
     tableNode* trav;
     for(i = 0; i < NUMTABLES; i++) {
         for(trav = T[i].front; trav != NULL; trav = trav->nextTable) {
-            printf(" %d ", i);
-            if(strcmp(G[x].guestID, trav->G.guestID) == 0){
-                printf("%d %d", trav, T[i].front);
-                if(trav == T[i].front) {
-                    T[i].front = trav->nextTable;
-                    temp = trav;
+            for(x = 0; x < numGuests; x++) {
+                if(strcmp(G[x].guestID, trav->G.guestID) == 0){
+                    if(trav == T[i].front) {
+                        T[i].front = trav->nextTable;
+                        temp = trav;
+                        free(temp);
+                    }
+                }
+                else if(trav->nextTable != NULL && strcmp(G[x].guestID, trav->nextTable->G.guestID) == 0) {
+                    temp = trav->nextTable;
+                    trav->nextTable = temp->nextTable;
                     free(temp);
-                    x++;
-                } else {
-                    temp = trav;
-                    trav = temp->nextTable;
-                    free(temp);
-                    x++;
                 }
             }
         }
     }
-    
-
 }
 
 int main(void) {
